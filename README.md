@@ -1,0 +1,2 @@
+# FuckHomework
+handright homework generator
