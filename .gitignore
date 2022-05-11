@@ -129,7 +129,5 @@ dmypy.json
 .pyre/
 
 # output file
-out/*
-pdf/*
-img/*
 *.pdf
+*.jpg
