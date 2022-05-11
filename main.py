@@ -6,7 +6,8 @@ from PIL import Image, ImageFont
 from handright import Template, handwrite
 
 article_dir = './article'
-article_file = '荷塘月色.txt'
+article_name = '荷塘月色'
+article_file_type = '.txt'
 pdf_dir = './pdf'
 img_dir = './img'
 img_type = '.jpg'
@@ -18,6 +19,7 @@ font_wan = './fonts/Wan.ttf'
 font_xing = './fonts/Xing.ttf'
 
 text = ""
+article_file = article_name + article_file_type
 article_path = os.path.join(article_dir, article_file)
 with open(article_path, 'r') as f:
     lines = f.readlines()
@@ -43,15 +45,21 @@ template = Template(
     perturb_theta_sigma=0.04,  # 笔画旋转偏移随机扰动
 )
 images = handwrite(text, template)
+img_out_dir = os.path.join(img_dir, article_name)
+if not os.path.isdir(img_out_dir):
+    os.mkdir(img_out_dir)
 for i, im in enumerate(images):
     assert isinstance(im, Image.Image)
-    im.save(f'{img_dir}/{i}{img_type}')
+    img_path = f'{img_out_dir}/{i}{img_type}'
+    im.save(img_path)
+    print(f'file {img_path} saved!')
 
-pdf_file = article_file.split('.')[0] + '.pdf'
+pdf_file = article_name + '.pdf'
 pdf_path = os.path.join(pdf_dir, pdf_file)
 with open(pdf_path, "wb") as f:
     img_list = []
-    for img in os.listdir(img_dir):
+    for img in os.listdir(img_out_dir):
         if img.endswith(img_type):
-            img_list.append(os.path.join(img_dir, img))
+            img_list.append(os.path.join(img_out_dir, img))
     f.write(img2pdf.convert(img_list))
+    print(f'pdf {pdf_path} saved!')
