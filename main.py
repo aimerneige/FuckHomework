@@ -1,8 +1,14 @@
 # -*- coding: utf-8 -*-
 
+import os
+import img2pdf
 from PIL import Image, ImageFont
 from handright import Template, handwrite
 
+
+pdf_path = './pdf/test.pdf'
+img_path = './img'
+img_type = '.jpg'
 
 font_bo = './fonts/Bo.ttf'
 font_jing = './fonts/Jing.ttf'
@@ -46,4 +52,13 @@ images = handwrite(text, template)
 for i, im in enumerate(images):
     assert isinstance(im, Image.Image)
     # im.show()
-    im.save("./out/{}.png".format(i))
+    im.save(f'{img_path}/{i}{img_type}')
+
+
+with open(pdf_path, "wb") as f:
+    img_list = []
+    for img in os.listdir(img_path):
+        if img.endswith(img_type):
+            img_list.append(os.path.join(img_path, img))
+    print(img_list)
+    f.write(img2pdf.convert(img_list))
