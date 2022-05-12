@@ -55,11 +55,11 @@ class thread_transition(threading.Thread):
 
 
 def txt_to_pdf(text: str, file_name: str, out_dir: str = Config.out_dir) -> str:
-
-    if len(text) > 500:
+    cut_count = Config.cut_count
+    if len(text) > cut_count:
         threads = []
-        for i in range(0, len(text), 500):
-            thread = thread_transition(async_txt, (text[i:i + 500],))
+        for i in range(0, len(text), cut_count):
+            thread = thread_transition(async_txt, (text[i:i + cut_count],))
             threads.append(thread)
             thread.start()
         images = (thread.get_result() for thread in threads)
