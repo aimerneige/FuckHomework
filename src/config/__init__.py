@@ -13,7 +13,7 @@ class Config:
     font_wan = './fonts/Wan.ttf'
     font_xing = './fonts/Xing.ttf'
     template = Template(
-        background=Image.new(mode="1", size=(3665, 5183), color=1),
+        background=Image.open('../background/a4.png'),
         font=ImageFont.truetype(font_bo, size=100),
         line_spacing=150,
         fill=0,  # 字体“颜色”
