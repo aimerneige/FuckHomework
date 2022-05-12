@@ -30,9 +30,9 @@ class Config:
         word_spacing=5,
         line_spacing_sigma=2,  # 行间距随机扰动
         font_size_sigma=2,  # 字体大小随机扰动
-        word_spacing_sigma=1,  # 字间距随机扰动
+        word_spacing_sigma=2,  # 字间距随机扰动
         end_chars="，。；：！",  # 防止特定字符因排版算法的自动换行而出现在行首
-        perturb_x_sigma=3,  # 笔画横向偏移随机扰动
+        perturb_x_sigma=6,  # 笔画横向偏移随机扰动
         perturb_y_sigma=3,  # 笔画纵向偏移随机扰动
-        perturb_theta_sigma=0.04,  # 笔画旋转偏移随机扰动
+        perturb_theta_sigma=0.08,  # 笔画旋转偏移随机扰动
     )

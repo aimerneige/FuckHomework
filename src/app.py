@@ -26,7 +26,7 @@ return: pdf
 @app.route('/', methods=['POST', 'GET'])
 def index():
     text = request.form['text']
-    if len(text) > 1000:
+    if len(text) > 2000:
         return '文本过长'
     path = f'{time.time()}+{request.remote_addr}'
 
@@ -43,7 +43,7 @@ class ASPConfig(object):
             'func': 'app:apscheduler_remove_file',  # 指定运行的函数
             'args': ["../pdf"],  # 传入函数的参数
             'trigger': 'interval',  # 指定 定时任务的类型
-            'seconds': 10*3600  # 运行的间隔时间
+            'seconds': 3600  # 运行的间隔时间
         }
     ]
 
