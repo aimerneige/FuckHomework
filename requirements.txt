@@ -1,3 +1,4 @@
 handright
 Pillow
 img2pdf
+flask_apscheduler
