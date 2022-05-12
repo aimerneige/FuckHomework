@@ -131,3 +131,4 @@ dmypy.json
 # output file
 *.pdf
 *.jpg
+*.png
