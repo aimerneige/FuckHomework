@@ -11,6 +11,7 @@ import time
 from flask_apscheduler import APScheduler
 from flask import Flask, render_template, request, send_file, session, after_this_request
 
+from src.config import Config
 from src.tranisition import txt_to_pdf
 
 app = Flask(__name__)
@@ -29,15 +30,6 @@ def index():
         return '文本过长'
     path = f'{time.time()}+{request.remote_addr}'
 
-    # @after_this_request
-    # def remove_file(response):
-    #     if response.status_code != 200:
-    #         return response
-    #     try:
-    #         os.remove(path)
-    #     except Exception as e:
-    #         print(e)
-
     return send_file(txt_to_pdf(text, path))
 
 
@@ -51,7 +43,7 @@ class ASPConfig(object):
             'func': 'app:apscheduler_remove_file',  # 指定运行的函数
             'args': ["../pdf"],  # 传入函数的参数
             'trigger': 'interval',  # 指定 定时任务的类型
-            'seconds': 10*3600 # 运行的间隔时间
+            'seconds': 10*3600  # 运行的间隔时间
         }
     ]
 
@@ -59,10 +51,14 @@ class ASPConfig(object):
 
 
 def apscheduler_remove_file(path):
-    print('删除文件')
+
     for file in os.listdir(path):
         if file.endswith('.pdf'):
-            os.remove(f'{path}/' + file)
+            try:
+                os.remove(f'{path}/' + file)
+                print('删除文件'+file)
+            except PermissionError as e:
+                pass
 
 
 if __name__ == '__main__':

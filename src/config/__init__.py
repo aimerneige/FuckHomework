@@ -11,6 +11,7 @@ from handright import Template
 
 
 class Config:
+
     out_dir = '../pdf/'
     font_bo = './fonts/Bo.ttf'
     font_jing = './fonts/Jing.ttf'

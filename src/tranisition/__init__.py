@@ -21,7 +21,7 @@ def save(pdf_path, images):
     return pdf_path
 
 
-def iterable_to_pdf(iterables: Tuple[Iterable[Image.Image]], pdf_path) -> Any:
+def iterable_to_pdf(iterables: Tuple[Iterable[Image.Image]], pdf_path) -> str:
     images = []
     for i in iterables:
         images.extend([image for image in i])
@@ -54,7 +54,8 @@ class thread_transition(threading.Thread):
             return None
 
 
-def txt_to_pdf(text: str, file_name: str, out_dir: str = Config.out_dir) -> Any:
+def txt_to_pdf(text: str, file_name: str, out_dir: str = Config.out_dir) -> str:
+
     if len(text) > 500:
         threads = []
         for i in range(0, len(text), 500):
