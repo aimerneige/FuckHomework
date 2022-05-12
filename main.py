@@ -28,7 +28,7 @@ with open(article_path, 'r') as f:
 
 template = Template(
     background=Image.new(mode="1", size=(3665, 5183), color=1),
-    font=ImageFont.truetype(font_lan, size=100),
+    font=ImageFont.truetype(font_bo, size=100),
     line_spacing=150,
     fill=0,  # 字体“颜色”
     left_margin=240,
@@ -63,3 +63,4 @@ with open(pdf_path, "wb") as f:
             img_list.append(os.path.join(img_out_dir, img))
     f.write(img2pdf.convert(img_list))
     print(f'pdf {pdf_path} saved!')
+
