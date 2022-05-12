@@ -1,10 +1,4 @@
-# -*- coding: utf-8 -*-
-# @Time    : 2022/5/12 13:55
-# @Author  : 陈昊
-# @Email   : i@umb.ink
-# @File    : __init__.py.py
-# @Software: PyCharm
-import os
+
 
 from PIL import Image, ImageFont
 from handright import Template

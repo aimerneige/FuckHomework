@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-# @Time    : 2022/5/12 14:37
-# @Author  : 陈昊
-# @Email   : i@umb.ink
-# @File    : app.py
-# @Software: PyCharm
+
 '''文本转手写pdf Flask'''
 import os
 import time

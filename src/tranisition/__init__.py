@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-# @Time    : 2022/5/12 13:56
-# @Author  : 陈昊
-# @Email   : i@umb.ink
-# @File    : __init__.py.py
-# @Software: PyCharm
+
 '''保存文本为pdf文件'''
 import os
 import threading
