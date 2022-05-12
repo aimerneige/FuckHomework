@@ -11,7 +11,7 @@ from handright import Template
 
 
 class Config:
-    cut_count = 700 # 每页字数
+    cut_count = 900 # 每页字数
     out_dir = '../pdf/'
     font_bo = './fonts/Bo.ttf'
     font_jing = './fonts/Jing.ttf'
